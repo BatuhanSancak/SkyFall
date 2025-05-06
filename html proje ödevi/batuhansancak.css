@@ -1,0 +1,820 @@
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    height: 200vh;
+    overflow-x: hidden;
+    scroll-behavior: smooth; /* Sayfa kaydırırken yumuşak geçiş */
+}
+
+.rocket-description{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Üst Kısım */
+.top {
+    height: 110vh;
+    background-image: url('foto/earth-1756274.jpg'); /* Fotoğrafınız */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative; /* Fotoğraf ve yazı arasındaki düzeni sağlar */
+    overflow: hidden; /* Fotoğraf taşmalarını engeller */
+}
+
+
+/* Gezinme Çubuğu */
+header {
+    position: fixed; /* Menü sayfa kaydırıldığında sabit kalmasını sağlar */
+    top: 0; /* Menü sayfanın üst kısmına yerleşir */
+    width: 90%; /* Menü genişliği ekranın %90'ı kadar olur */
+    z-index: 1000; /* Diğer içeriklerin üstünde görünmesini sağlar */
+    padding: 10px 20px; /* Üst ve alt kenarlardan 10px, sağ ve soldan 20px boşluk ekler */
+    height: 50px; /* Menü yüksekliğini belirler */
+    background-color: rgba(0, 0, 0, 0.2); /* Arka plan rengini hafif siyah yapar, şeffaflık ekler */
+    display: flex; /* Flexbox düzeni ile menü elemanlarını hizalar */
+    justify-content: space-between; /* Menüyü sol ve sağ kenar arasında eşit şekilde dağıtır */
+    align-items: center; /* Menü elemanlarını dikeyde ortalar */
+    gap: 20px; /* Menü öğeleri arasındaki boşluğu 20px yapar */
+    box-sizing: border-box; /* Padding ve border hesaplamayı içerik genişliği içinde yapar */
+}
+
+/* Logo */
+.logo img {
+    height: 80px; /* Logonun yüksekliğini 80px yapar */
+    width: auto; /* Logo genişliğini orantılı olarak ayarlar */
+}
+
+/* Menü */
+nav ul {
+    display: flex; /* Menü öğelerini yan yana sıralar */
+    justify-content: flex-start; /* Menü öğelerini sola hizalar */
+    margin: 0; /* Menü öğelerinin dış marginlerini sıfırlar */
+    padding: 0; /* Menü öğelerinin iç padding'ini sıfırlar */
+    list-style: none; /* Menü öğelerinin başındaki default işaretleri (noktalar, vb.) kaldırır */
+    box-sizing: border-box; /* Padding ve border hesaplamayı içerik genişliği içinde yapar */
+}
+
+/* Menü öğeleri arasına mesafe ekle */
+nav ul li {
+    margin: 0 20px; /* Menü öğeleri arasına 20px boşluk bırakır */
+    background-color: rgba(0, 0, 0, 0); /* Menü öğelerinin arka planını şeffaf yapar */
+}
+
+/* Menü öğesi bağlantısı (a tag) */
+nav ul li a {
+    text-decoration: none; /* Linklerin altını çizmeyi kaldırır */
+    color: #fff; /* Link yazı rengini beyaz yapar */
+    font-family: 'Inter', sans-serif; /* Yazı tipini 'Inter' fontu yapar */
+    font-size: 0.8rem; /* Yazı boyutunu küçültür */
+    font-weight: 600; /* Yazı kalınlığını belirler */
+    padding: 10px 05px; /* Menü öğesi etrafına 10px üst-alt ve 5px sağ-sol padding ekler */
+    border-radius: 30px; /* Menü öğelerinin köşelerini yuvarlatır */
+    transition: all 0.3s ease; /* Tüm özelliklerde 0.3 saniyelik geçiş efekti ekler */
+    position: relative; /* Alt çizgi efektini konumlandırmak için gerekli */
+    padding-left: 05px; /* Sol padding'i 5px yapar */
+}
+
+/* Alt Çizgi Efekti */
+nav ul li a::after {
+    content: ""; /* Boş bir içerik ekler */
+    position: absolute; /* Alt çizgiyi mutlak konumda tutar */
+    bottom: 0; /* Alt kısmına yerleştirir */
+    left: 0; /* Sol tarafa hizalar */
+    width: 0; /* Başlangıçta alt çizginin genişliği 0 olur */
+    height: 1px; /* Alt çizginin yüksekliği 1px olur */
+    background-color: #fff; /* Alt çizgiyi beyaz yapar */
+    transition: width 0.5s ease; /* Alt çizginin genişliği üzerine gelindiğinde 0.5 saniyede yayılmasını sağlar */
+}
+
+/* Hover (Fareyle üzerine gelindiğinde) */
+nav ul li a:hover::after {
+    width: 100%; /* Alt çizgi genişliğini tam olarak 100% yapar */
+}
+
+nav ul li a:hover {
+    color: #f0f0f0; /* Link üzerine gelindiğinde yazı rengini açık beyaz yapar */
+}
+
+
+/* 1000px ve daha küçük ekranlarda menü öğelerini yatay hale getir */
+@media (max-width: 1000px) {
+    nav ul {
+        flex-direction: row; /* Menü öğeleri yatay sıralanacak */
+        gap: 0px; /* Menü öğeleri arasına mesafe ekle */
+        align-items: center;
+        width: 100%; /* Menü öğelerinin tamamı görünür olmalı */
+        position: relative;
+        background-color: rgba(0, 0, 0, 0); /* Arka plan rengini değiştirdim */
+    }
+
+    header {
+        flex-direction: row;
+        height: auto;
+        padding: 10px 20px;
+    }
+}
+
+/* 750px altı ekranlar için */
+@media (max-width: 750px) {
+    nav ul li a {
+        font-size: 0.7rem; /* Menü yazı boyutunu küçült */
+    }
+
+    header {
+        padding: 10px 10px;
+    }
+
+    nav ul {
+        font-size: 12px; /* Yazı boyutunu küçült */
+        padding: 0; /* Menü öğeleri arasındaki boşluğu azalt */
+    }
+
+    nav ul li {
+        margin: 0 10px; /* Menü öğeleri arasındaki boşluğu azalt */
+    }
+}
+
+/* Sayfa İçeriği */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+
+
+/* Yazı Kaybolması ve Scroll Efekti için JS */
+body {
+    height: 200vh; /* Sayfa uzunluğunu artırarak scroll yapılmasını sağlıyoruz */
+}
+
+/* Yazı ve Menü için Scroll ile Kaybolma */
+.top .content, header {
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+.top.scrolled .content, header.scrolled {
+    opacity: 0; /* Scroll ile yazıyı ve menüyü kaybetme */
+}
+
+/* Yazı */
+.altyazi{
+    font-size: 13px;
+    font-weight: lighter;
+    line-height: 1.5;
+}
+.content {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1; /* Yazıyı fotoğrafın önünde tutar */
+    color: white; /* Yazı rengini beyaz yapar */
+    font-size: 3rem; /* Yazı boyutunu ayarlayabilirsiniz */
+    font-weight: bold; /* Yazıyı kalın yapar */
+   
+}
+/* Scroll ile kaybolma efekti */
+.top .content {
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+.top.scrolled .content {
+    opacity: 0; /* Scroll ile yazıyı kaybetme */
+}
+
+/* Scroll ile kaybolma efekti */
+body {
+    height: 200vh; /* Sayfa uzunluğunu artırarak scroll yapılmasını sağlıyoruz */
+}
+
+/* Scroll efektini eklemek için */
+.top .content {
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+.top.scrolled .content {
+    opacity: 0; /* Scroll ile yazıyı kaybetme */
+}
+
+/* Orta Kısım */
+  .middle {
+    height: 100vh;
+    background-color: #000; /* Siyah arka plan */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Kaydırma engellensin */
+}
+
+/* Sabit ışık halkasını ekliyoruz */
+.middle .light-effect1 {
+    position: absolute;
+    top: 50%; /* Sayfanın ortasında yer alacak */
+    left: 50%;
+    width: 700px; /* Işığın büyüklüğü */
+    height: 700px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+    transform: translate(0%, -50%); /* Ortada olması için konumlandırma */
+    pointer-events: none; /* Işık halkası üzerine tıklama engellensin */
+}
+
+  /* Geçiş animasyonu */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px); /* Başlangıçta sola kaymış */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* Sonraki pozisyon */
+    }
+}
+
+
+  .section1 {
+    color: white;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: fit-content;
+    margin-right: 300px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    padding: 10px;
+    transition: transform 1s ease, box-shadow 1s ease;
+}
+
+
+/* Geçiş efekti ile ekranda göründüğünde */
+.item1.visible {
+    opacity: 1;
+    transform: translateX(0);
+    animation: slideIn 1s ease-out forwards; /* Süreyi 1 saniyeye çıkararak yavaşlatıyoruz */
+}
+
+/* Satırların sırasıyla gelmesini sağlamak için her satıra farklı bir gecikme ekleyelim */
+.item1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc; /* Alt çizgi */
+    padding: 5px 0; /* Üst-alt boşluk */
+    line-height: fitting;
+    opacity: 0; /* Başlangıçta gizli */
+    transform: translateX(-30px); /* Başlangıçta sola kaymış */
+    transition: opacity 1s ease-out, transform 1s ease-out; /* Geçiş sürelerini 1 saniye yaparak yavaşlatıyoruz */
+}
+
+.label {
+    font-weight: bold;
+    flex: -5;
+}
+
+.value {
+    flex: 2;
+    text-align: right;
+    margin-left: 190px;
+}
+
+/* Roket Görselleri */
+
+.rockets img {
+    margin: 10px;
+    width: auto;
+    height: 600px;
+    border-radius: 10px;
+    transition: transform 0.3s ease; /* Görselin büyüme efektinin geçiş süresi */
+}
+/* Fare ile üzerine gelindiğinde roketin büyümesi ve dönmesi */
+.rockets img:hover {
+    transform: scale(1.2) ; /* Büyüme ve 360 derece döndürme */
+}
+
+
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column; /* Küçük ekranlarda alt alta dizilir */
+    }
+
+    .section1 {
+        width: 100%; /* Tam genişlik kullan */
+    }
+
+    .item1 {
+        flex-direction: column; /* Yazıları alt alta diz */
+        text-align: left; /* Yazıları sola hizala */
+    }
+
+    .value {
+        margin-left: 0; /* Margin kaldır */
+    }
+}
+
+@media (max-width: 480px) {
+    .label {
+        font-size: 14px; /* Daha küçük yazı boyutu */
+    }
+
+    .value {
+        font-size: 14px; /* Daha küçük yazı boyutu */
+    }
+}
+
+.bottom1 {
+    height: 100vh;
+    background-color: #000; /* Siyah arka plan */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Kaydırma engellensin */
+}
+
+/* Sabit ışık halkasını ekliyoruz */
+.bottom1 .light-effect2 {
+    position: absolute;
+    top: 50%; /* Sayfanın ortasında yer alacak */
+    left: 50%;
+    width: 600px; /* Işığın büyüklüğü */
+    height: 700px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+    transform: translate(-115%, -50%); /* Ortada olması için konumlandırma */
+    pointer-events: none; /* Işık halkası üzerine tıklama engellensin */
+}
+
+.section2 {
+    color: white;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: fit-content;
+    margin-left: 300px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    padding: 20px;
+    transition: transform 1s ease, box-shadow 1s ease;
+}
+
+
+/* Geçiş efekti ile ekranda göründüğünde */
+.item2.visible {
+    opacity: 1;
+    transform: translateX(0);
+    animation: slideIn 1s ease-out forwards; /* Süreyi 1 saniyeye çıkararak yavaşlatıyoruz */
+}
+
+/* Satırların sırasıyla gelmesini sağlamak için her satıra farklı bir gecikme ekleyelim */
+.item2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc; /* Alt çizgi */
+    padding: 5px 0; /* Üst-alt boşluk */
+    line-height: fitting;
+    opacity: 0; /* Başlangıçta gizli */
+    transform: translateX(-30px); /* Başlangıçta sola kaymış */
+    transition: opacity 1s ease-out, transform 1s ease-out; /* Geçiş sürelerini 1 saniye yaparak yavaşlatıyoruz */
+}
+
+/* Roket Görselleri */
+
+.rockets2 img {
+    width: auto;
+    height: 500px;
+    border-radius: 10px;
+    transition: transform 0.3s ease; /* Görselin büyüme efektinin geçiş süresi */
+}
+/* Fare ile üzerine gelindiğinde roketin büyümesi ve dönmesi */
+.rockets2 img:hover {
+    transform: scale(1.2) ; /* Büyüme ve 360 derece döndürme */
+}
+
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+
+    .section2 {
+        width: 100%; /* Tam genişlik kullan */
+    }
+
+    .item2 {
+        flex-direction: column; /* Yazıları alt alta diz */
+        text-align: left; /* Yazıları sola hizala */
+    }
+
+    .value {
+        margin-left: 0; /* Margin kaldır */
+    }
+}
+
+
+
+.bottom2 {
+    height: 100vh;
+    background-color: #000; /* Siyah arka plan */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Kaydırma engellensin */
+}
+
+/* Sabit ışık halkasını ekliyoruz */
+.bottom2 .light-effect3 {
+    position: absolute;
+    top: 50%; /* Sayfanın ortasında yer alacak */
+    left: 50%;
+    width: 600px; /* Işığın büyüklüğü */
+    height: 700px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+    transform: translate(06%, -50%); /* Ortada olması için konumlandırma */
+    pointer-events: none; /* Işık halkası üzerine tıklama engellensin */
+}
+
+.main-container {
+    color: #ffffff;
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    flex-wrap: wrap; /* Responsive görünüm için kutuların alt satıra geçmesini sağlar */
+}
+
+.section3 {
+    color: white;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: fit-content;
+    margin-right: 250px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    padding: 20px;
+    transition: transform 1s ease, box-shadow 1s ease;
+}
+
+
+/* Geçiş efekti ile ekranda göründüğünde */
+.item3.visible {
+    opacity: 1;
+    transform: translateX(0);
+    animation: slideIn 1s ease-out forwards; /* Süreyi 1 saniyeye çıkararak yavaşlatıyoruz */
+}
+
+/* Satırların sırasıyla gelmesini sağlamak için her satıra farklı bir gecikme ekleyelim */
+.item3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc; /* Alt çizgi */
+    padding: 5px 0; /* Üst-alt boşluk */
+    line-height: fitting;
+    opacity: 0; /* Başlangıçta gizli */
+    transform: translateX(-30px); /* Başlangıçta sola kaymış */
+    transition: opacity 1s ease-out, transform 1s ease-out; /* Geçiş sürelerini 1 saniye yaparak yavaşlatıyoruz */
+}
+
+
+
+.label {
+    font-weight: bold;
+    flex: -5;
+}
+
+.value {
+    flex: 2;
+    text-align: right;
+    margin-left: 190px;
+}
+
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+   
+    .section3 {
+        width: 100%; /* Tam genişlik kullan */
+    }
+
+    .item3 {
+        flex-direction: column; /* Yazıları alt alta diz */
+        text-align: left; /* Yazıları sola hizala */
+    }
+
+    .value {
+        margin-left: 0; /* Margin kaldır */
+    }
+}
+
+
+/* Alt Kısım */
+.bottom {
+    height: 120vh;
+    background-image: url('foto/SpaceX-Falcon-Heavy-thruster-1609057.jpg'); /* Alt fotoğrafınız */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    transition: background 1s ease-in-out; /* Geçiş efekti */
+    background-color: rgba(0, 0, 0, 0); /* Saydam geçiş */
+    margin-top: -1px; /* Orta fotoğrafla birleşmesi için */ 
+ 
+}
+
+
+.sure{
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    position: relative; /* Konumlandırmayı aktive eder */
+    top: -30px; /* Yazıyı biraz yukarıya taşır */
+}
+.countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.countdown-items {
+    display: flex;
+    align-items: center;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 5px; /* Sayılar arasındaki mesafe */
+}
+
+.countdown-item span {
+    font-size: 5rem;
+    color: #ffffff; /* Sayılar için renk */
+}
+
+.countdown-item p {
+    font-size: 2rem;
+    color: #fff;
+}
+
+.countdown-separator {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0 10px; /* Sayılar arasındaki mesafe */
+    position: relative; /* Konumlandırma için */
+    top: -30px; /* : işaretini biraz yukarıya taşır */
+}
+
+
+
+
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    background-color: black; /* Siyah arka plan */
+    padding: 20px;
+}
+
+.left-content {
+    font-family: 'Arial',sans-serif;
+    width: 50%; /* Sol içerik için alan */
+    color: white;
+    font-family: Arial, sans-serif;
+    opacity: 0;
+    transform: translateY(30px); /* Başlangıçta gizlenmiş ve aşağı kaymış */
+    transition: opacity 1s ease, transform 1s ease; /* Yavaşça görünür hale gelir */
+}
+
+.content-box {
+    background-color: rgba(0, 0, 0, 0.5); /* Kutu rengi */
+    padding: 20px;
+    border-radius: 10px; /* Yuvarlatılmış köşeler */
+    width: 100%;
+}
+
+.left-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.left-content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Görünür hale gelme için animasyon */
+@keyframes reveal {
+    0% {
+        opacity: 0;
+        transform: translateY(30px); /* Başlangıçta gizli ve aşağıda */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Son durumda görünür ve normal konumda */
+    }
+}
+
+/* 40%'lık kısımda görünme efekti */
+.left-content.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: reveal 1s forwards;
+}
+
+@media screen and (max-width: 1200px) {
+    .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .left-content,
+    .right-content {
+        width: 100%;
+    }
+}
+
+.launch {
+    height: 105vh; /* Yüksekliği ekranın tamamını kaplar */
+    background-image: url('foto/pexels-pixabay-256152.jpg'); /* Arka plan fotoğrafı */
+    background-position: center; /* Fotoğrafı ortalar */
+    background-repeat: no-repeat; /* Fotoğrafın tekrar etmesini engeller */
+    background-size: cover; /* Fotoğraf ekranı tamamen kaplar */
+    background-color: black; /* Herhangi bir beyaz boşluk olursa siyah doldurur */
+    transition: all 0.5s ease; /* Geçiş animasyonu */
+}
+
+/* 1000px ve daha dar ekranlar için ayar */
+@media (max-width: 1000px) {
+    .launch {
+        height: 90vh !important; /* Yüksekliği biraz kısalt */
+        background-size: cover !important; /* Arka plan hala tam ekranı kaplasın */
+    }
+}
+
+/* 750px ve daha dar ekranlar için ayar */
+@media (max-width: 750px) {
+    .launch {
+        height: 80vh !important; /* Yüksekliği daha da kısalt */
+        background-size: cover !important; /* Arka plan hala uyumlu kalsın */
+    }
+}
+
+/* 500px ve daha dar ekranlar için ayar */
+@media (max-width: 500px) {
+    .launch {
+        height: 70vh !important; /* Yüksekliği daha da kısalt */
+        background-size: cover !important; /* Arka plan hala uyumlu kalsın */
+    }
+}
+
+
+
+.right-content {
+    display: flex;
+    justify-content: flex-end; /* Video'yu sağa yaslar */
+    align-items: center;
+    width: 60%; /* Video alanının genişliği */
+    overflow: hidden;
+}
+
+.right-content video {
+    width: 90%; /* Video genişliğini alacağı alan kadar yapar */
+    height: auto; /* Yükseklik otomatik olur */
+    border-radius: 30px; /* Video köşelerini yuvarlar */
+}
+
+footer {
+    background-color: black; /* Arka plan rengi */
+    color: #ffffff; /* Yazı rengi */
+    display: flex; /* Üç sütunu hizalamak için flexbox */
+    justify-content: space-between; /* Sol, orta ve sağ kısmı yatayda ayır */
+    align-items: center; /* Dikey ortalama */
+    padding: 10px 20px; /* Kenar boşlukları */
+    width: 100%;
+    height: auto; /* İçeriğe göre yükseklik */
+}
+
+/* Sol Kısım */
+.footer-left {
+    display: flex; /* Telefon ve e-posta bilgilerini yan yana yerleştirmek için flexbox */
+    gap: 20px; /* Elemanlar arası boşluk */
+    align-items: center; /* Dikeyde ortalama */
+}
+
+/* Orta Kısım */
+.footer-center {
+    display: flex; /* Sosyal medya ikonlarını yan yana hizalamak için */
+    gap: 20px; /* Elemanlar arası boşluk */
+    align-items: center; /* Dikeyde ortalama */
+    justify-content: center; /* Ortada hizalama */
+}
+
+/* Sağ Kısım */
+.footer-right {
+    text-align: right; /* Yazıyı sağa hizalar */
+    font-size: 14px; /* Yazı boyutu */
+    opacity: 0.8; /* Saydamlık */
+}
+
+/* Genel Bağlantı Stili */
+.footer-links li {
+    list-style-type: none; /* Noktaları kaldırır */
+}
+
+.footer-links li a {
+    display: inline-block;
+    padding: 8px 15px; /* Boşluk ayarı */
+    background-color: #222121; /* Arka plan rengi */
+    color: #fff; /* Yazı rengi */
+    text-decoration: none; /* Alt çizgi kaldırılır */
+    border-radius: 5px; /* Köşeleri yuvarlatır */
+    font-size: 14px; /* Yazı boyutu */
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease; /* Geçiş efekti */
+}
+
+/* Hover Efekti */
+.footer-links li a:hover {
+    background-color: #444444; /* Arka plan rengini değiştirir */
+    color: #ffffff; /* Yazı rengini değiştirir */
+    transform: scale(1.1); /* Büyütme efekti */
+}
+
+/* 1000px Ekran Boyutu İçin Responsive Düzenleme */
+@media (max-width: 1000px) {
+    footer {
+        flex-direction: column; /* Footer öğeleri dikeyde hizalanacak */
+        align-items: center; /* Ortada hizalayacağız */
+    }
+
+    .footer-left, .footer-center, .footer-right {
+        margin-bottom: 10px; /* Elemanlar arası boşluk ekleyelim */
+    }
+
+    .footer-left, .footer-center {
+        display: flex;
+        flex-direction: row; /* Telefon ve e-posta bilgileri yan yana */
+        align-items: center; /* Dikeyde ortalama */
+        justify-content: center; /* Ortada hizalama */
+    }
+
+    .footer-center {
+        display: flex;
+        gap: 20px; /* Sosyal medya ikonları arasında boşluk */
+    }
+}
+
+/* 750px altı ekran boyutu için daha fazla responsive stil */
+@media (max-width: 750px) {
+    footer {
+        padding: 10px 15px; /* Footer içindeki padding'i küçültüyoruz */
+    }
+
+    .footer-left li a, 
+    .footer-center li a, 
+    .footer-right li a {
+        font-size: 12px; /* Yazı boyutunu küçültüyoruz */
+        padding: 6px 10px; /* Daha küçük boşluk */
+    }
+}

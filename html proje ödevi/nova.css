@@ -1,0 +1,201 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    height: 200vh;
+    overflow-x: hidden;
+    scroll-behavior: smooth; /* Sayfa kaydırırken yumuşak geçiş */
+    box-sizing: border-box;
+}
+
+/* Top2 için temel düzen */
+.top2 {
+    height: 100vh; /* Ekran yüksekliğini tamamen kaplar */
+    background-image: url('foto/52667587533_8c6d17d456_k.jpg'); /* Arka plan fotoğrafı */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative; /* İçerik düzenleme için */
+    overflow: hidden; /* Taşmaları engeller */
+}
+
+/* İçerik kutusu */
+.top2 .content {
+    font-size: 3rem; /* Yazı boyutu */
+    font-weight: bold;
+    opacity: 1; /* Görünürlük başlangıçta açık */
+    transform: translateY(0); /* Animasyon için başlangıç konumu */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Animasyon */
+    text-align: center;
+    margin: 0; /* Ortalamayı sağlar */
+}
+
+/* Scroll ile yazıyı kaybetme efekti */
+.top2.scrolled .content {
+    opacity: 0; /* Kaybolur */
+    transform: translateY(-50px); /* Yukarı kaydırılır */
+}
+
+/* Mobil cihazlar için responsive ayarlar */
+@media (max-width: 1000px) {
+    .top2 .content {
+        font-size: 2rem; /* Yazı boyutunu küçült */
+    }
+}
+
+@media (max-width: 750px) {
+    .top2 .content {
+        font-size: 1.5rem; /* Daha küçük ekranlar için yazı */
+    }
+} 
+
+
+
+/* .backrun için siyah arka plan */
+.backrun {
+    background-color: black; /* Arka plan siyah */
+    width: 100%;
+    height: 100vh; /* Tam ekran yüksekliği */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* .nova1 Bölümü */
+.nova1 {
+    height: 100%; /* Yükseklik %100 */
+    width: 100%; /* Genişlik %100 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* .novastation için görsel ayarları */
+.novastation {
+    width: 80%; /* Görselin genişliğini ayarlayın */
+    height: auto;
+    position: relative;
+}
+
+.novastation img {
+    width: 100%; /* Görseli %100 genişlikte yap */
+    height: 100%; /* Görseli %100 yükseklikte yap */
+    object-fit: cover; /* Görselin orantılı şekilde kesilmesini sağlar */
+}
+
+/* Ekran daraldığında görselin orantılı küçülmesini sağlamak için */
+@media screen and (max-width: 1000px) {
+    .novastation img {
+        width: 100%; /* Ekrana uyumlu olarak genişlik ayarlanır */
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .novastation img {
+        width: 100%; /* Görselin tam genişlikte olması sağlanır */
+        height: auto; /* Yükseklik orantılı olarak ayarlanır */
+    }
+}
+
+
+
+/* .nova22 Bölümü */
+.nova22 {
+    height: 70vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* İçerik kutusunun stili */
+.content-box1 {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    text-align: center;
+}
+
+/* Scroll ile animasyon için başlangıç durumu */
+.scroll-text {
+    font-family: 'Arial', sans-serif;
+    color: white;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    width: 85%;
+    margin: 0 auto;
+    text-align: center;
+    opacity: 0; /* Başlangıçta görünmez */
+    transform: translateY(30px); /* Başlangıçta aşağı kaydırılmış */
+    transition: opacity 1s ease-out, transform 1s ease-out; /* Yumuşak geçiş */
+}
+
+/* Scroll ile görünür olduğunda */
+.nova22.visible .scroll-text {
+    opacity: 1; /* Görünür yap */
+    transform: translateY(0); /* Kaydırmayı sıfırla */
+}
+
+@media (max-width: 750px) {
+    .nova1{
+        height: 90vh;
+        width: 90vh;
+    }
+    .nova22 {
+        height: auto; /* Dinamik yükseklik */
+        min-height: 50vh; /* Minimum yükseklik belirleyebilirsiniz */
+    }
+}
+
+/* Responsive ayarlar */
+@media (max-width: 768px) {
+    .scroll-text {
+        font-size: 1.2rem;
+        line-height: 1.4;
+        width: 90%;
+    }
+
+    .content-box1 {
+        width: 90%;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-text {
+        font-size: 1rem;
+        line-height: 1.3;
+        width: 95%;
+    }
+
+    .content-box1 {
+        padding: 10px;
+    }
+}
+
+
+

@@ -15,7 +15,7 @@ body {
     font-family: 'Arial', sans-serif;
     height: 200vh;
     overflow-x: hidden;
-    scroll-behavior: smooth; /* Sayfa kaydırırken yumuşak geçiş */
+    scroll-behavior: smooth; 
 }
 
 .rocket-description{
